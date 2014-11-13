@@ -156,8 +156,8 @@ function(panels, BlurSlider, appList, alaException, alaExceptions, alaDCL,
       SettingsHelper('geolocation.blur.cl.type').get(function(value){
         this.dclData.type = value;
       }.bind(this));
-      SettingsHelper('geolocation.blur.cl.country').get(function(value){
-        this.dclData.country = value;
+      SettingsHelper('geolocation.blur.cl.region').get(function(value){
+        this.dclData.region = value;
       }.bind(this));
       SettingsHelper('geolocation.blur.cl.city').get(function(value){
         this.dclData.city = value;
@@ -187,7 +187,7 @@ function(panels, BlurSlider, appList, alaException, alaExceptions, alaDCL,
 
       this.settings.createLock().set({
         'geolocation.blur.cl.type':     settings.type,
-        'geolocation.blur.cl.country':  settings.country,
+        'geolocation.blur.cl.region':   settings.region,
         'geolocation.blur.cl.city':     settings.city,
         'geolocation.blur.longitude':   settings.longitude,
         'geolocation.blur.latitude':    settings.latitude,

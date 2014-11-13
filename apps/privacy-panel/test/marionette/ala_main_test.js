@@ -30,7 +30,7 @@ marionette('check ala main panel', function() {
     var geolocationSwitcher = client.findElement(
       'span[data-l10n-id="use-geolocation"]');
     var alaSwitcher = client.findElement(
-      'span[data-l10n-id="use-location-blur"]');
+      'span[data-l10n-id="use-location-adjustment"]');
 
     assert.ok( ! useLocationBlurBox.displayed());
 
