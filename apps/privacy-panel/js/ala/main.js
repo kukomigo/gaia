@@ -22,7 +22,7 @@ function(panels, BlurSlider, appList, alaException, alaExceptions, alaDCL,
   function AlaPanel() {
     this.blurSlider = new BlurSlider();
     this.geolocationCords = null;
-    this.dclData = [];
+    this.dclData = {};
   }
 
   AlaPanel.prototype = {
@@ -175,7 +175,7 @@ function(panels, BlurSlider, appList, alaException, alaExceptions, alaDCL,
      * @return {Array}
      */
     getDCLData: function() {
-      return this.dclData;
+      return Object.create(this.dclData);
     },
 
     /**
