@@ -57,6 +57,7 @@ function(panels, root) {
 
   // load all templates for guided tour sections
   panels.load('gt');
+  panels.load('about');
 
   require([
     'ala/main',
