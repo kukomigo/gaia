@@ -385,6 +385,17 @@ section[data-section="gt"] .btn {
   color: #e30613;
 }
 
+/**
+ * RPP auth
+ */
+#rpp-main[data-login-box="true"] #rpp-login {
+  display: block;
+}
+
+#rpp-main[data-login-box="false"] #rpp-register {
+  display: block;
+}
+
 
 /**
  * Screenlock and passcode panels

@@ -88,7 +88,7 @@ function(panels, BlurSlider, appList, alaExceptions, SettingsListener,
       this.currentAppSettings =
         alaExceptions.exceptionsList[this.itemData.origin];
 
-      if ( ! this.currentAppSettings) {
+      if (!this.currentAppSettings) {
         // set default value (from general settings)
         this.appType.value = 'system-settings';
 
@@ -123,7 +123,7 @@ function(panels, BlurSlider, appList, alaExceptions, SettingsListener,
       switch (value) {
         case 'user-defined':
           /** @TODO: add alert */
-          if ( ! (alaExceptions.exceptionsList[this.currentApp] &&
+          if (!(alaExceptions.exceptionsList[this.currentApp] &&
             alaExceptions.exceptionsList[this.currentApp].coords)) {
 
             // show alert if geolocation is not set

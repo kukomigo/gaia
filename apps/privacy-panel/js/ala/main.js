@@ -135,7 +135,7 @@ function(panels, BlurSlider, appList, alaException, alaExceptions, alaDCL,
 
       switch (value) {
         case 'user-defined':
-          if ( ! this.geolocationCords) {
+          if (!this.geolocationCords) {
             // show alert if geolocation is not set
             this.alert.removeAttribute('hidden');
           }
@@ -202,7 +202,7 @@ function(panels, BlurSlider, appList, alaException, alaExceptions, alaDCL,
      * Go back from DCL
      */
     goBackFromDCL: function() {
-      panels.show({ id: 'ala-main', back: true} );
+      panels.show({ id: 'ala-main', back: true });
     }
   };
 

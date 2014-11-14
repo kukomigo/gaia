@@ -143,20 +143,22 @@ function(panels, SettingsListener, SettingsHelper) {
       // set new list of cities for selected region
       this.selectedRegionCities = this.regionsAndCities[this.config.region];
 
-      // clean old regions list
-      this.regions.innerHTML = '';
-
+      var options = document.createDocumentFragment();
       Object.keys(this.regionsAndCities).forEach(function(regionName) {
         var option = document.createElement('option');
         option.value = regionName;
         option.setAttribute('data-l10n-id', regionName);
-        this.regions.add(option);
+        options.appendChild(option);
       }.bind(this));
+
+      // prepare new regions list
+      this.regions.innerHTML = '';
+      this.regions.appendChild(options);
     },
 
     updateType: function() {
-      this.config.type =
-        this.config.type === undefined ? 'gps' : this.config.type;
+      // gps will be enabled by default
+      this.config.type = this.config.type || 'gps';
 
       this.panel.dataset.type = this.config.type;
 
@@ -174,13 +176,13 @@ function(panels, SettingsListener, SettingsHelper) {
       this.longitude.disabled = modeRC;
       this.latitude.disabled = modeRC;
 
-      this.typeGPS.checked = ! modeRC;
-      this.regions.disabled = ! modeRC;
-      this.cities.disabled = ! modeRC;
+      this.typeGPS.checked = !modeRC;
+      this.regions.disabled = !modeRC;
+      this.cities.disabled = !modeRC;
     },
 
     updateRegion: function() {
-      if ( ! this.regionsAndCities[this.config.region] ||
+      if (!this.regionsAndCities[this.config.region] ||
         this.config.region === undefined) {
         this.config.region =
           (this.timeZone &&
@@ -202,19 +204,23 @@ function(panels, SettingsListener, SettingsHelper) {
     updateCitiesList: function() {
       this.selectedRegionCities = this.regionsAndCities[this.config.region];
 
-      this.cities.innerHTML = '';
+      var options = document.createDocumentFragment();
 
       Object.keys(this.selectedRegionCities).forEach(function(cityName) {
         var option = document.createElement('option');
         option.value = cityName;
         option.setAttribute('data-l10n-id', cityName);
-        this.cities.add(option);
+        options.appendChild(option);
       }.bind(this));
+
+      // prepare new cities list
+      this.cities.innerHTML = '';
+      this.cities.appendChild(options);
     },
 
     updateCity: function() {
       if (this.config.city === undefined ||
-        ! this.selectedRegionCities[this.config.city]) {
+        !this.selectedRegionCities[this.config.city]) {
         this.config.city =
           (this.timeZone &&
           this.selectedRegionCities[this.timeZone.city]) ?
