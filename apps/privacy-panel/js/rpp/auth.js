@@ -115,7 +115,7 @@ function(panels, PassPhrase, SettingsListener) {
         if (connection.iccId) {
           icc = navigator.mozIccManager.getIccById(connection.iccId);
           if (icc.cardState === 'ready') {
-            label = 'SIM ' + (key + 1);
+            label = 'sim' + (key + 1);
             this.simcards = this.simcards ? this.simcards : {};
             this.simcards[label] = icc;
           }
@@ -139,7 +139,7 @@ function(panels, PassPhrase, SettingsListener) {
       if (this.lsPasscodeEnabled) {
         element = document.createElement('option');
         element.value = 'passcode';
-        element.setAttribute('data-l10n-id', 'rpp-passcode-type');
+        element.setAttribute('data-l10n-id', 'enter-lockscreen-passcode');
         select.appendChild(element);
       }
     },
