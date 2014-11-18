@@ -40,7 +40,6 @@ function(panels, PassPhrase, SettingsListener) {
       // Define first time use to eventualy show register page
       this.defineFTU();
       this.getSIMCards();
-      this.fillChangeOptions();
 
       this.observers();
       this.events();
@@ -83,6 +82,8 @@ function(panels, PassPhrase, SettingsListener) {
           // use rpp features.
           this.toggleAlertBox();
           this.fillChangeOptions();
+          this.changePanel.querySelector('.pin-type')
+            .dispatchEvent(new Event('change'));
         }.bind(this)
       );
     },
@@ -115,7 +116,7 @@ function(panels, PassPhrase, SettingsListener) {
         if (connection.iccId) {
           icc = navigator.mozIccManager.getIccById(connection.iccId);
           if (icc.cardState === 'ready') {
-            label = 'sim' + (key + 1);
+            label = 'SIM ' + (key + 1);
             this.simcards = this.simcards ? this.simcards : {};
             this.simcards[label] = icc;
           }
@@ -132,6 +133,7 @@ function(panels, PassPhrase, SettingsListener) {
           element = document.createElement('option');
           element.value = simcard;
           element.textContent = simcard;
+          element.setAttribute('data-l10n-id', simcard);
           select.appendChild(element);
         }
       }
@@ -139,7 +141,7 @@ function(panels, PassPhrase, SettingsListener) {
       if (this.lsPasscodeEnabled) {
         element = document.createElement('option');
         element.value = 'passcode';
-        element.setAttribute('data-l10n-id', 'enter-lockscreen-passcode');
+        element.setAttribute('data-l10n-id', 'passcode');
         select.appendChild(element);
       }
     },
