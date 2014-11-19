@@ -67,8 +67,9 @@ define(function(require) {
           ThemesItem(panel.querySelector('.themes-section'));
         homescreenItem =
           HomescreenItem(panel.querySelector('#homescreens-section'));
-        privacyPanelItem =
-          PrivacyPanelItem(panel.querySelector('.privacy-panel-item'));
+        privacyPanelItem = PrivacyPanelItem({
+          privacyPanelPanel: panel.querySelector('.privacy-panel-item')
+        });
       },
       onBeforeShow: function rp_onBeforeShow() {
         bluetoothItem.enabled = true;
