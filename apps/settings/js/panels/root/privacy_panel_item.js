@@ -6,17 +6,18 @@
 
 define(function(require) {
   'use strict';
+
   var AppsCache = require('modules/apps_cache');
 
-  function PrivacyPanelItem(element) {
-    this._element = element;
-    this._element.link = element.querySelector('a');
+  function PrivacyPanelItem(args) {
+    this._element = args.element;
+    this._link = args.link;
     this._app = null;
 
     this._privacyPanelManifestURL = document.location.protocol +
       '//privacy-panel.gaiamobile.org' +
       (location.port ? (':' + location.port) : '') + '/manifest.webapp';
-    
+
     this._getApp();
 
     this._element.addEventListener('click', this._launch.bind(this));
@@ -37,7 +38,7 @@ define(function(require) {
       } else {
         this._enabled = enabled;
         if (this._enabled) {
-          this._updateSelection();
+          this._blurLink();
         }
       }
     },
@@ -58,22 +59,21 @@ define(function(require) {
      */
     _getApp: function pp_getApp() {
       return AppsCache.apps().then(function(apps) {
-        for (var i = 0; i < apps.length; i++) {
-          var app = apps[i];
-          if (app.manifestURL === this._privacyPanelManifestURL) {
+        apps.forEach(function(app) {
+         if (app.manifestURL === this._privacyPanelManifestURL) {
             this._app = app;
             this._element.removeAttribute('hidden');
             return;
           }
-        }
-      });
+        }.bind(this));
+      }.bind(this));
     },
 
     /**
      * Launch Privacy Panel app.
      *
-     * @param event
-     * @method _launch
+     * @param {Event} event
+     * @memberOf PrivacyPanelItem
      */
     _launch: function pp_launch(event) {
       // Stop propagation & prevent default not to block other settings events.
@@ -99,13 +99,12 @@ define(function(require) {
     },
 
     /**
-     * Update theme section visibility based on _themeCount
+     * Blur link.
      *
      * @memberOf PrivacyPanelItem
-     * @method _updateSelection
      */
-    _updateSelection: function() {
-      this._element.link.blur();
+    _blurLink: function pp_blurLink() {
+      this._link.blur();
     }
   };
 
