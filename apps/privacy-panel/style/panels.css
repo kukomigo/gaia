@@ -543,3 +543,40 @@ span.passcode-digit[data-dot]::before {
   margin-top: -0.75rem;
 }
 
+/** Icons
+ ---------------------------------------------------------*/
+
+[class^="gaia-icon-"]:before,
+[class*="gaia-icon-"]:before {
+  font-family: "gaia-icons";
+  position: relative;
+  top: 0px;
+  left: 0.3rem;
+  font-size: 2.5rem;
+  line-height: 5rem;
+  color: #657073;
+  font-style: normal;
+}
+
+.gaia-icon-close:before {
+  content: 'close';
+  color: #fff;
+}
+
+/** Back Icon
+ ---------------------------------------------------------*/
+
+.gaia-icon-back:before {
+  content: 'back';
+}
+
+/**
+ * [dir='rtl']
+ *
+ * Switch to use the 'forward' icon
+ * when in right-to-left direction.
+ */
+
+[dir='rtl'] .icon-back:before {
+  content: 'forward';
+}
