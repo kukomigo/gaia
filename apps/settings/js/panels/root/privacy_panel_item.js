@@ -60,7 +60,7 @@ define(function(require) {
     _getApp: function pp_getApp() {
       return AppsCache.apps().then(function(apps) {
         apps.forEach(function(app) {
-         if (app.manifestURL === this._privacyPanelManifestURL) {
+          if (app.manifestURL === this._privacyPanelManifestURL) {
             this._app = app;
             this._element.removeAttribute('hidden');
             return;
