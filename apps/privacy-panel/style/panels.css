@@ -23,18 +23,6 @@ section[data-settings="true"] #back-to-settings {
   visibility: visible;
 }
 
-.icon-ala {
-  background-image: url("images/ala.png");
-}
-
-.icon-rpp {
-  background-image: url("images/rpp.png");
-}
-
-.icon-gt {
-  background-image: url("images/gt.png");
-}
-
 
 /**
  * Lists
