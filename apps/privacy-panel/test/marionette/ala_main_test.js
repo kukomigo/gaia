@@ -23,7 +23,7 @@ marionette('check ala main panel', function() {
     var useLocationBlurBox = client.findElement('.show-when-geolocation-on');
     var geolocationTypeBox = client.findElement('.geolocation-type-box');
     var description1 = client.findElement('.hide-when-ala-on');
-    var description2 = client.findElement('.show-when-ala-on.description');
+    var description2 = client.findElement('.show-when-ala-on .description');
     var addExceptionBox = client.findElement('.add-exception-box');
     var typeBlur = client.findElement('.type-blur');
     var typeCustom = client.findElement('.type-custom-location');
